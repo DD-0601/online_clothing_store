@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+/* variables */
+:root {
+    --basic-font-color: #140005;
+    --hover-color: #464033;
+    --primary-theme-color: #FADCD9;
+    --secondary-theme-color: #F9F1F0;
+    --additional-color1: #D691A0;
+    --additional-color2: #FADCDC;
+    --light-background-color: #F4F4F4;
+    --heading-font: "Frank Ruhl Libre", serif;
+    --paragraph-font: "Lato", sans-serif;
+    --number-font: "Lora", sans-serif;
+}
+#category-carousel .category-carousel-button {
+    border: none;
+    background: none;
+    color: #fff9;
+}
+#category-carousel .category-carousel-button > i {
+    font-size: 1.5rem;
+}
+#category-carousel .category-carousel-button:hover {
+    color: var(--primary-theme-color);
+}
+#category-sort #category-select {
+    font-family: var(--paragraph-font);
+    border: 1px solid #0005;
+    border-radius: 5px;
+}
+.category-carousel-viewport {
+    overflow: hidden; /* 將slides的容器的溢出設為hidden，才不會在手機模式時還是全畫面 */
+}

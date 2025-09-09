@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+#product-detail  .container {
+    /* min-width: 576px; */
+    /* max-width: 768px; */
+}
+@media (max-width: 768px) {
+    #product-detail  .container {
+        width: 80vw;
+        /* min-width: 400px; */
+    }
+}
+/* variables */
+#product-detail {
+    font-family: var(--paragraph-font);
+}
+:root {
+    --basic-font-color: #140005;
+    --hover-color: #464033;
+    --primary-theme-color: #FADCD9;
+    --secondary-theme-color: #F9F1F0;
+    --light-background-color: #F4F4F4;
+    --heading-font: "Frank Ruhl Libre", serif;
+    --paragraph-font: "Lato", sans-serif;
+    --number-font: "Lora", sans-serif;
+}
+
+  /* carousel */
+.product-detail-embla {
+    max-width: 48rem;
+    margin: auto;
+    --slide-height: 19rem;
+    --slide-spacing: 1rem;
+    --slide-size: 100%; /* 設定100% 為一頁一張圖，25% 為四張，以此類推。 */
+}
+.product-detail-embla__viewport {
+overflow: hidden;
+position: relative;
+}
+.product-detail-embla__container {
+display: flex;
+touch-action: pan-y pinch-zoom; /* 	限制觸控操作：允許垂直滑動和縮放，但禁止水平滑動（因為這是由 JS 控制的）。 */
+}
+.product-detail-embla__slide {
+transform: translate3d(0, 0, 0);
+flex: 0 0 var(--slide-size);
+min-width: 0; /* 防止 flex item 橫向 overflow。 */
+}
+#product-detail .product-detail-img {
+    max-height: 80vh;
+}
+
+/* 讓Header不要直接壓在cart-content上面 */
+#product-detail {
+    padding-top: 6rem;
+}
+/* pagination dots settings */
+.embla__dots {
+display: flex;
+justify-content: center;
+gap: 0.5rem;
+margin-top: 1rem;
+position: absolute;
+bottom: 10px;
+left: 50%;
+transform: translateX(-50%);
+}
+.embla__dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background-color: #FFF8;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s;
+border: 1px solid #999;
+}
+.embla__dot--selected {
+background-color: #0005;
+}
+
+/* product-details */
+#product-detail ul {
+    padding: 0;
+}
+#product-detail .product-detail-size > span,
+#product-detail .product-detail-shipping-method > span {
+    font-size: 0.8rem;
+    color: var(--hover-color);
+}
+.product-detail-size ul li {
+    list-style: none;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: 1px solid var(--basic-font-color);
+    width: 3rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.product-detail-size li.selected {
+    background-color: #333;
+    color: white;
+}
+#product-detail .product-detail-name {
+    font-weight: bold;
+}
+#product-detail .product-detail-shipping-method-group-item {
+    margin-right: 1rem;
+}
+#product-detail .product-detail-shipping-method {
+    font-size: 0.8rem;
+}
+#product-detail .product-detail-price {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#product-detail .product-detail-qty * {
+    background-color: var(--light-background-color);
+}
+#product-detail .product-detail-qty {
+    height: 2.5rem;
+    background-color: var(--light-background-color);
+    border-radius: 1.5rem;
+}
+#product-detail .product-detail-qty {
+    font-size: 1rem;
+    width: 8rem;
+}
+#product-detail .product-detail-qty > button {
+    border: none;
+}
+#product-detail .product-detail-qty > button > i {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+#product-detail .product-detail-add-cart #add-cart-button {
+    border-radius: 1.5rem;
+    border: none;
+    background-color: var(--basic-font-color);
+    color: #FFF;
+    width: 100%;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+#product-detail .product-detail-add-cart #add-cart-button:active {
+    background-color: var(--hover-color);
+}
+#product-detail .product-detail-shipping-method-group-item label > input[type="radio"] {
+    display: none;
+}
+#product-detail .product-detail-shipping-method-group-item label > input[type="radio"] {
+    font-size: 0.5rem;
+}

@@ -1,0 +1,78 @@
+/* component內的樣式在此設定 */
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* variables */
+:root {
+    --basic-font-color: #140005;
+    --hover-color: #464033;
+    --primary-theme-color: #FADCD9;
+    --secondary-theme-color: #F9F1F0;
+    --additional-color1: #D691A0;
+    --additional-color2: #FADCDC;
+    --light-background-color: #F4F4F4;
+    --heading-font: "Frank Ruhl Libre", serif;
+    --paragraph-font: "Lato", sans-serif;
+    --number-font: "Lora", sans-serif;
+}
+.number-font {
+    font-family: var(--number-font);
+}
+#order-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+#order-list {
+    flex: 1;
+    box-sizing: border-box;
+    background-color: var(--light-background-color);
+}
+#order-list .order-list-card {
+    background-color: #fff;
+    padding: 0.5rem;
+    box-shadow: 3px 3px 5px #0005;
+    border-radius: 0.5rem;
+    font-family: var(--paragraph-font);
+}
+.order-info {
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: var(--additional-color1);
+    color: #fff;
+    border-radius: 0.5rem;
+}
+.order-info-date,
+.order-info-total {
+    font-size: 0.8rem;
+}
+.order-info-total-amount {
+    font-size: 1.5rem;
+}
+.item-info-title {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    color: #0006;
+}
+.all-items {
+    padding: 0.5rem;
+    border-top: 1px solid #0003;
+
+}
+.item-price {
+    color: #0009;
+}
+@media (max-width: 375px) {
+    .item-info-title {
+        font-size: 0.6rem;
+    }
+    .item-info {
+        font-size: 0.8rem;
+    }
+    .order-info-id {
+        font-size: 1.2rem;
+    }
+    .order-info-total-amount {
+        font-size: 1.2rem;
+    }
+}

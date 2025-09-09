@@ -1,0 +1,567 @@
+/* component內的樣式在此設定 */
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+/* modified bootstrap classes */
+.container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.btn.btn-primary {
+  background-color: var(--basic-font-color);
+  border-color: var(--basic-font-color);
+  color: white;
+  border-radius: 0px;
+}
+.btn.btn-primary:hover {
+  background-color: var(--hover-color);
+}
+
+/* variables */
+:root {
+  --basic-font-color: #140005;
+  --hover-color: #464033;
+  --primary-theme-color: #FADCD9;
+  --secondary-theme-color: #F9F1F0;
+  --additional-color1: #D691A0;
+  --additional-color2: #FADCDC;
+  --light-background-color: #F4F4F4;
+  --heading-font: "Frank Ruhl Libre", serif;
+  --paragraph-font: "Lato", sans-serif;
+  --number-font: "Lora", sans-serif;
+}
+
+/* header section */
+header .nav li a {
+  color: var(--basic-font-color);
+  text-decoration: none;
+}
+header ul {
+  padding: 0;
+}
+.btn-custom {
+  color: var(--basic-font-color);
+  border: 1px solid var(--basic-font-color);
+  background-color: var(--primary-theme-color);
+  text-align: center;
+  padding: 0.3rem 1.5rem;
+}
+.container-fluid.app {
+  background-color: var(--primary-theme-color);
+}
+#logo-name {
+  white-space: nowrap;
+}
+#header-cart-link {
+  position: relative;
+}
+#header-total-items {
+  font-size: 12px;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  background-color: var(--additional-color1);
+  color: var(--light-background-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+#hamburger-menu {
+  position: relative;
+  left: 50px;
+}
+#hamburger-menu > button {
+  background-color: var(--primary-theme-color);
+  width: 3rem;
+  height: 2rem;
+  border: none;
+  color: var(--additional-color1);
+}
+#hamburger-dropdown {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  background-color: var(--secondary-theme-color);
+  font-weight: 300;
+  z-index: 9999;
+  border-radius: 0 0 0 1rem;
+}
+#hamburger-dropdown ul li {
+  padding: 0.5rem 2rem;
+  opacity: 0;
+}
+#hamburger-dropdown ul li:hover{
+  background-color: var(--additional-color1);
+}
+#hamburger-dropdown ul li:hover a,
+#hamburger-dropdown ul li:hover button {
+  color: var(--additional-color2);
+  background-color: var(--additional-color1);
+  transition: color ease 0.5s;
+}
+#hamburger-dropdown ul li a {
+  color: var(--additional-color1);
+}
+#hamburger-dropdown ul li button {
+  color: var(--additional-color1);
+  background-color: var(--secondary-theme-color);
+  border: none;
+  font-weight: bold;
+}
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.slide-in-from-bottom {
+  animation: slideInFromBottom 0.5s ease-out forwards;
+}
+.slide-in-from-left {
+  animation: slideInFromLeft 0.5s ease-out forwards;
+}
+/* header optional class */
+.header-optional-class {
+  z-index: 9999;
+  background-color: #fff6;
+  backdrop-filter: blur(5px);
+}
+.header-shadow {
+  box-shadow: 0 2px 5px #0003;
+}
+/* hero section */
+.hero-section {
+  min-height: 60vh;
+}
+
+/* .hero-section .hero-left,
+.hero-section .hero-right {
+  width: 50vw;
+
+} */
+.hero-left {
+  padding: 1rem;
+}
+.hero-left #hero-message {
+  font-size: 3rem;
+}
+.hero-right #hero-main-picture > img {
+  border-radius: 0 25% 0 25%;
+}
+.hero-section {
+  background-image: url('Group 32 - waves.png');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain; /* 或 contain，完整呈現圖像 */
+  padding-bottom: 3rem; /* 給足夠的空間，避免內文擋到背景圖 */
+  position: relative;
+  /* TODO:背景的waves需要再調整成縮放時不會變動 */
+}
+
+/* collection section */
+.container-fluid .new-collection {
+  background-image: url("./vertical waves and square dots.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-bottom: 5rem;
+}
+.collection-up {
+  padding-top: 8rem;
+}
+.collection-heading {
+  font-family: var(--heading-font);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.collection-subHeading {
+  font-family: var(--paragraph-font);
+}
+
+.container-fluid.new-collection {
+  background-color: #fff;
+}
+
+.product-demo .demo-card .product-name-card {
+  background-color: #fff;
+  width: 200px;
+}
+
+.product-demo {
+  gap: 1rem;
+  width: 80vw;
+}
+
+.product-demo .demo-card img {
+  max-width: 275px;
+}
+
+.collection-down {
+  margin: 0 8rem;
+  margin-top: 8rem;
+}
+
+.heading {
+  margin-bottom: 2rem;
+}
+
+#collection-figures {
+    margin-top: -4rem;
+  }
+
+.figures {
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: var(--paragraph-font);
+}
+
+.description {
+  font-family: var(--paragraph-font);
+}
+
+.collection-down #collection-figures .figure-card {
+  box-shadow: 3px 3px 3px var(--basic-font-color);
+  height: 4rem;
+  max-width: 200px;
+  background-color: #FFF9;
+  padding: 3rem 1rem;
+}
+
+/* best-seller section */
+.best-seller {
+  background-color: var(--basic-font-color);
+  color: #FFF;
+}
+
+.best-seller-left {
+  min-width: 300px;
+  height: 350px;
+}
+
+.best-seller .heading {
+  font-family: var(--heading-font);
+  font-size: 3rem;
+  font-weight: bold;
+}
+@media (max-width: 390px) {
+  /* 在小畫面 heading不會超出螢幕寬度 */
+  .best-seller-left .heading {
+    font-size: 2rem;
+  }
+}
+.best-seller .description {
+  margin: 0.5rem 0 1.5rem 0;
+  font-weight: 300;
+}
+
+.best-seller #see-more button {
+  border: 1px solid #FFF;
+  min-width: 200px;
+  font-weight: 300;
+  padding: 1rem;
+}
+
+.best-seller-slide {
+  width: 200px;
+  background-color: #fff;
+  margin: 0 0.5rem;
+}
+.best-seller-slide-description {
+  min-height: 100px;
+  font-family: var(--heading-font);
+  color: var(--basic-font-color);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.embla__slide {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+/* our-product section */
+#our-product.container-fluid {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-image: url("./Vector 3 - vertical wavy line.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: contain;
+  overflow-x: hidden;
+}
+#our-product-nav-title {
+  font-family: var(--heading-font);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+#our-product-nav-list {
+  font-family: var(--paragraph-font);
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+#our-product-nav-list > ul {
+  height: 4rem;
+  padding-left: 0; /* 將ul預設的padding 歸0，讓ul裡的li置中*/
+}
+
+#our-product-nav-list > ul > li {
+  list-style: none;
+}
+
+#our-product-nav-list a {
+  color: var(--basic-font-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+#our-product-nav-list a:hover {
+  border-bottom: 1px solid var(--basic-font-color);
+}
+/* ProductCard */
+.cart-notification {
+  /* 彈出視窗 & 動畫 */
+  display: inline-block;
+  position: fixed;
+  top: 3rem;
+  right: 0;
+  background-color: var(--additional-color1);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.15);
+  z-index: 99999;
+  animation: fadeInOut 2s ease;
+}
+@keyframes fadeInOut {
+  0% { opacity: 0;}
+  10% { opacity: 1; transform: translateX(-50%);}
+  90% { opacity: 1;}
+  100% { opacity: 0;}
+}
+#product-card-container .product-card-slide {
+  font-family: var(--heading-font);
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+#product-card-container .productName {
+  color: var(--basic-font-color);
+}
+#product-card-container .price {
+  color: var(--basic-font-color);
+  font-size: 1rem;
+}
+#product-card-container .product-card-slide-description button {
+  border: none;
+  background: none;
+}
+#product-card-container .shopping-cart-icon {
+  color: var(--hover-color);
+  font-size: 1.2rem;
+}
+#product-card-container .shopping-cart-icon:hover {
+  color: var(--basic-font-color);
+}
+#product-card-container .product-card-slide-picture {
+  overflow: hidden;
+}
+#product-card-container .product-card-slide-picture-img {
+  border-radius: 2rem;
+  transition: all 0.3s ease;
+}
+#product-card-container .product-card-slide-picture-img:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+/* deal-of-the-day section */
+#deal-of-the-day .container .row{
+  background-color: var(--primary-theme-color);
+}
+
+#deal-description #deal-description-title {
+  font-family: var(--heading-font);
+  font-size: 3rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#deal-description #deal-description-content {
+  font-family: var(--paragraph-font);
+}
+
+#deal-description #deal-countdown .deal-countdown-subject {
+  background-color: #fff;
+  height: 5rem;
+  width: 5rem;
+  box-shadow: 0 5px 5px #0006;
+}
+
+#deal-countdown .number,
+#deal-countdown .digit {
+  font-family: var(--paragraph-font);
+}
+
+#deal-countdown .number {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+#deal-countdown .digit {
+  font-size: 0.8rem;
+}
+
+#deal-see-more button {
+  width: 20vw;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-shadow: 0 5px 5px #0006;
+}
+
+#deal-picture-filter {
+  position: relative;
+}
+
+#deal-picture-filter #deal-picture-filter-dots {
+  position: absolute;
+  bottom: 200px;
+  left: -50px;
+  width: 100px;
+  height: 100px;
+  background-image: url("./Group 35 - dots.png");
+}
+#deal-picture-filter #deal-picture-filter-square {
+  position: absolute;
+  bottom: -30px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background-color: #fff5;
+}
+
+/* reviews section */
+#reviews {
+  padding: 6rem 0;
+  background-image: url("./Vector 4 - horizontal wavy line.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow-x: hidden;
+}
+
+#review-up #review-heading {
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+@media (max-width: 390px) {
+  #review-up #review-heading {
+    font-size: 1.8rem;
+  }
+}
+
+#review-up #review-description {
+  font-family: var(--paragraph-font);
+}
+
+.review-card {
+  background-color: var(--secondary-theme-color);
+  border-radius: 2rem 0 2rem 0;
+  box-shadow: 1px 1px 3px #0003;
+}
+
+.review-card .review-item {
+  font-family: var(--paragraph-font);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.review-card .review-content {
+  font-family: var(--paragraph-font);
+
+}
+.review-card .review-user-avatar img{
+  width: 50px;
+  border-radius: 50%;
+}
+/* footer carousel */
+#footer-carousel {
+  overflow: hidden; /* 沒有加overflow： hidden的話，carousel右側會多出一截，導致頁面多出白邊*/
+}
+/* footer section */
+#footer {
+  overflow-x: hidden;
+}
+
+#footer-info {
+  min-height: 300px;
+  background-color: #000;
+  color: #fff;
+  font-family: var(--paragraph-font);
+}
+
+.footer-slide-container {
+  overflow: hidden;
+}
+
+.footer-slide-container .footer-slide-track {
+  display: flex;
+  width: fit-content;
+}
+
+#footer-info ul > li {
+  list-style: none;
+  margin: 0 0.5rem;
+  padding: 0;
+  white-space: nowrap;
+}
+
+#footer-info-group-customer-service > ul,
+#footer-info-group-social > ul {
+  padding-left: 0;
+}
+
+/* breakpoint settings */
+@media (min-width: 992px) {
+  #collection-figures {
+    margin-top: -2rem;
+  }
+  .heading {
+    margin-bottom: 0rem;
+  }
+}
+@media (max-width: 768px) {
+  .embla__slide {
+    margin-right: 6rem;
+  }
+  .best-seller #see-more button {
+    width: 80vw;
+  }
+}
+@media (max-width: 992px) {
+  #deal-description {
+    margin-bottom: 3rem;
+  }
+  #deal-see-more button {
+    width: 80vw;
+    min-width: 320px;
+  }
+  .best-seller .heading {
+    white-space: nowrap;
+  }
+}

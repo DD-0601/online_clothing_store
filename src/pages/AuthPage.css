@@ -1,0 +1,67 @@
+/* component內的樣式在此設定 */
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* variables */
+:root {
+  --basic-font-color: #140005;
+  --hover-color: #464033;
+  --primary-theme-color: #FADCD9;
+  --secondary-theme-color: #F9F1F0;
+  --additional-color1: #D691A0;
+  --additional-color2: #FADCDC;
+  --light-background-color: #F4F4F4;
+  --heading-font: "Frank Ruhl Libre", serif;
+  --paragraph-font: "Lato", sans-serif;
+  --number-font: "Lora", sans-serif;
+}
+.form-frame {
+    border: 1px solid var(--basic-font-color);
+    padding: 1rem;
+    box-shadow: 3px 3px 5px #0003;
+}
+#auth {
+    font-family: var(--paragraph-font);
+}
+#auth-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+#auth {
+    flex: 1;
+}
+#auth-page-wrapper .container * {
+    /* border: 1px solid red; */
+}
+#auth-title {
+    font-family: var(--heading-font);
+}
+#auth-login #login > div > *,
+#auth-sign-up #sign-up > div > * {
+    padding: 3px;
+    margin: 3px;
+}
+#auth-login #login > button,
+#auth-sign-up #sign-up > button {
+    padding: 5px 0;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
+    background-color: var(--basic-font-color);
+}
+#auth-login #login > button:active,
+#auth-sign-up #sign-up > button:active {
+    background-color: var(--hover-color);
+}
+#no-account > button,
+#have-account > button {
+    padding: 5px 0;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
+    background-color: var(--hover-color);
+}
