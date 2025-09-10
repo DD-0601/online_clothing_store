@@ -15,13 +15,33 @@ app.use(cors());
 app.use(express.json());
 
 // 設定 postgres 資料庫連線
-const pool = new Pool ({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DATABASE,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-});
+// const pool = new Pool ({
+//     user: process.env.DB_USER,
+//     host: process.env.DB_HOST,
+//     database: process.env.DATABASE,
+//     password: process.env.DB_PASSWORD,
+//     port: process.env.DB_PORT,
+// });
+let pool;
+
+if (process.env.DATABASE_URL) {
+    // Render / 雲端環境
+    pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false, // Render 預設需要這個
+    },
+    });
+} else {
+  // 本地開發環境
+    pool = new Pool({
+        user: process.env.DB_USER,
+        host: process.env.DB_HOST,
+        database: process.env.DATABASE,
+        password: process.env.DB_PASSWORD,
+        port: process.env.DB_PORT,
+    });
+}
 
 // API: 取得商品categories
 app.get("/api/categories", async (req, res) => {
