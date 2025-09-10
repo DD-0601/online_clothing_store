@@ -12,10 +12,10 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked"
 import { useShoppingCart } from "../contexts/ShoppingCartContext"
 
 const options: EmblaOptionsType = {
-  // 不一定要安裝 EmblaOptionsType 套件，也可將以下內容直接寫在useEmblaCarousel括號內
-  loop: true,
-  align: 'start',
-  slidesToScroll: 1
+    // 不一定要安裝 EmblaOptionsType 套件，也可將以下內容直接寫在useEmblaCarousel括號內
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1
 }
 
 // 設定抓取的商品資料類型
@@ -42,10 +42,7 @@ function ProductDetail() {
         return () => window.removeEventListener("scroll", handleScroll); // 清理事件
     },[])
 
-    const { dispatch, totalQuantity } = useShoppingCart();
-    // useEffect(() => {
-    //     console.log("useEffect觀測的購物車數量：", totalQuantity);
-    // }, [totalQuantity]);
+    const { dispatch } = useShoppingCart();
 
     const { id } = useParams();
     const [ product, setProduct ] = useState<ProductData | null>(null);

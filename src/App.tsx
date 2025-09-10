@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import './EmblaCarousel.css'
@@ -11,7 +11,7 @@ import Deal from './components/Deal'
 import Reviews from './components/Reviews'
 import FooterCarousel from './components/FooterCarousel'
 import Footer from './components/Footer'
-import { useCategories } from './contexts/CategoryContext'
+// import { useCategories } from './contexts/CategoryContext'
 import { AuthProvider } from './contexts/AuthContext'
 import { ShoppingCartProvider } from './contexts/ShoppingCartContext.tsx'
 // routes:
@@ -23,7 +23,7 @@ import AuthPage from './pages/AuthPage'
 import OrderList from './pages/OrderList'
 
 function HomePage() {
-  const categories = useCategories();
+  // const categories = useCategories();
 
   return (
     <>

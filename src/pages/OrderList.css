@@ -5,6 +5,7 @@
 :root {
     --basic-font-color: #140005;
     --hover-color: #464033;
+    --light-gray: #6E6E6E;
     --primary-theme-color: #FADCD9;
     --secondary-theme-color: #F9F1F0;
     --additional-color1: #D691A0;
@@ -75,4 +76,10 @@
     .order-info-total-amount {
         font-size: 1.2rem;
     }
+}
+#no-orders {
+    color: var(--light-gray);
+    padding-top: 2rem;
+    font-size: 1.5rem;
+    font-family: var(--paragraph-font);
 }

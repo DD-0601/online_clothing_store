@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../pages/CheckOut.css"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { useAuth } from "../contexts/AuthContext";

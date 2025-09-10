@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import { useShoppingCart } from "./ShoppingCartContext";
+// import { useShoppingCart } from "./ShoppingCartContext";
 
 interface User {
     id: string,

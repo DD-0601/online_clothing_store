@@ -77,40 +77,44 @@ function OrderList() {
             <div id="order-list">
                 <div className="container mt-3 mb-5">
                     <div className="row flex-column justify-content-center align-items-center">
-                        {orders.map((order, index) => (
-                        <div key={index} className="order-list-card col-10 d-flex flex-column my-3">
-                            <div className="order-info d-flex flex-row" onClick={() => handleExpand(order.order_id)}>
-                                <div className="order-info-left col-6">
-                                    <div className="order-info-id">#ID{order.order_id}</div>
-                                    <div className="order-info-date">Order Date: {order.updated_at.slice(0, 10)}</div>
-                                </div>
-                                <div className="order-info-right col-6 d-flex justify-content-center align-items-end">
-                                    <div className="order-info-total col-12 text-end">Amount:
-                                        <span className="order-info-total-amount ms-1 number-font">${order.total_amount}</span>
+                        {orders.length === 0 ? (
+                            <div className="d-flex justify-content-center align-items-center">
+                                <div id="no-orders">There are no orders at the moment.</div>
+                            </div>
+                        ) : (
+                            orders.map((order, index) => (
+                                <div key={index} className="order-list-card col-10 d-flex flex-column my-3">
+                                    <div className="order-info d-flex flex-row" onClick={() => handleExpand(order.order_id)}>
+                                        <div className="order-info-left col-6">
+                                            <div className="order-info-id">#ID{order.order_id}</div>
+                                            <div className="order-info-date">Order Date: {order.updated_at.slice(0, 10)}</div>
+                                        </div>
+                                        <div className="order-info-right col-6 d-flex justify-content-center align-items-end">
+                                            <div className="order-info-total col-12 text-end">Amount:
+                                                <span className="order-info-total-amount ms-1 number-font">${order.total_amount}</span>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div className="item-info-title d-flex">
+                                        <div className="tem-info-item col-6 text-center">ITEM</div>
+                                        <div className="tem-info-quantity col-2 text-center">QUANTITY</div>
+                                        <div className="tem-info-price col-2 text-center">PRICE</div>
+                                        <div className="tem-info-subtotal col-2 text-center">SUBTOTAL</div>
+                                    </div>
+                                    {order.items.map((item, index) => (
+                                    <div key={index} className="item-info d-flex flex-column">
+                                        {expanded[order.order_id] && (
+                                        <div className="all-items d-flex">
+                                            <div className="item-name col-6 text-center">{item.product_name}</div>
+                                            <div className="item-quantity col-2 text-center">{item.quantity}</div>
+                                            <div className="item-price col-2 text-center">${item.product_price}</div>
+                                            <div className="item-subtotal col-2 text-center">${item.subtotal}</div>
+                                        </div>
+                                        )}
+                                    </div>))}
                                 </div>
-                            </div>
-                            <div className="item-info-title d-flex">
-                                <div className="tem-info-item col-6 text-center">ITEM</div>
-                                <div className="tem-info-quantity col-2 text-center">QUANTITY</div>
-                                <div className="tem-info-price col-2 text-center">PRICE</div>
-                                <div className="tem-info-subtotal col-2 text-center">SUBTOTAL</div>
-                            </div>
-                            {order.items.map((item, index) => (
-                            <div key={index} className="item-info d-flex flex-column">
-                                {expanded[order.order_id] && (
-                                <div className="all-items d-flex">
-                                    <div className="item-name col-6 text-center">{item.product_name}</div>
-                                    <div className="item-quantity col-2 text-center">{item.quantity}</div>
-                                    <div className="item-price col-2 text-center">${item.product_price}</div>
-                                    <div className="item-subtotal col-2 text-center">${item.subtotal}</div>
-                                </div>
-                                )}
-                            </div>))}
-                            
-                            
-                        </div>
-                        ))}
+                                ))
+                        )}
                     </div>
                 </div>
             </div>

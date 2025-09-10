@@ -1,6 +1,6 @@
 // RegisterForm.tsx
-import { useState, type ReactHTMLElement } from "react";
-import type { ReactFormState } from "react-dom/client";
+import { useState } from "react";
+// import type { ReactFormState } from "react-dom/client";
 import { useAuth } from "../contexts/AuthContext";
 
 type Account = {

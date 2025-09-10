@@ -27,16 +27,16 @@ const options: EmblaOptionsType = {
 }
 
 // ⬇️ 預設的embla slide只有數字，需根據自己的slide內容設定每個物件的type，再作為array物件拋入PropType裡的slides
-type SlideItem = {
-    itemName: string;
-    review: string;
-    userAvatar: string;
-    userName: string;
-    userJob: string;
-};
-type PropType = {
-    slides: SlideItem[];
-};
+// type SlideItem = {
+//     itemName: string;
+//     review: string;
+//     userAvatar: string;
+//     userName: string;
+//     userJob: string;
+// };
+// type PropType = {
+//     slides: SlideItem[];
+// };
 
 type CarouselItem = {
     img_url: string;
@@ -67,79 +67,79 @@ function ProductCategory() {
             method: 'GET',
             url: 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list',
             params: {
-              country: 'us',
-              lang: 'en',
-              currentpage: '2',
-              pagesize: '20',
-              categories: category,
+                country: 'us',
+                lang: 'en',
+                currentpage: '2',
+                pagesize: '20',
+                categories: category,
             },
             headers: {
-              'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY,
-              'x-rapidapi-host': import.meta.env.VITE_RAPID_API_HOST,
+                'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY,
+                'x-rapidapi-host': import.meta.env.VITE_RAPID_API_HOST,
             }
-          };
+        };
 
-          async function fetchData() {
+        async function fetchData() {
 
-            const cacheKey = `product_category_${category}`
-            const cache = localStorage.getItem(cacheKey);
+        const cacheKey = `product_category_${category}`
+        const cache = localStorage.getItem(cacheKey);
 
-            if (cache) {
-                const {data, timestamp} = JSON.parse(cache);
-                const now = Date.now();
+        if (cache) {
+            const {data, timestamp} = JSON.parse(cache);
+            const now = Date.now();
 
-                const TEN_DAYS = 10 * 24 * 60 * 60 * 1000;
-                if (now - timestamp < TEN_DAYS) {
-                    // 快取未過期就將data設為productList
-                    setProductList(data);
-                    console.log("目前ProductCategpry的productList是使用快取的資料。")
-                    return;
-                }
+            const TEN_DAYS = 10 * 24 * 60 * 60 * 1000;
+            if (now - timestamp < TEN_DAYS) {
+                // 快取未過期就將data設為productList
+                setProductList(data);
+                console.log("目前ProductCategpry的productList是使用快取的資料。")
+                return;
             }
+        }
 
-            // 沒快取資料 or 快取已過期，則發送請求取得新資料
-            try {
-                const currentMode = import.meta.env.VITE_CURRENT_MODE;
-                console.log(`目前的模式是：${currentMode}`);
-                let fetchedProducts = [];
-                if (currentMode === "under_development") {
-                    const productCardQuantity = 20; //設定需要顯示幾樣商品
-                    const response = await fetch(`/mock_data/mockProductCategory_${category}.json`);
-                    const data = await response.json();
-                    fetchedProducts = data.results.slice(0, productCardQuantity);
-                    console.log(`目前ProductCategory的${category} productList是使用mock_data的資料。`)
-                } else {
-                    const response = await axios.request(options)
-                    fetchedProducts = response.data.results;
-                    console.log(`目前ProductCategory的${category} productList是使用API取回的新資料。`)
-                }
-                
-                console.log("ProductCategory的fetchedProducts：", fetchedProducts);
-                const mappedProducts = fetchedProducts.map((product: any) => ({
-                    picURL: product.galleryImages[0].baseUrl,
-                    stars: "⭐️⭐️⭐️⭐️⭐️",
-                    productName: product.name,
-                    price: parseFloat(product.price.value),
-                    id: product.defaultArticle.code,
-                    size: "M",
-                    colorHex: product.articles[0].rgbColor,
-                    colorName: product.articles[0].color.text,
-                  }))
-
-                setProductList(mappedProducts);
-                // 儲存快取 & timestamp
-                localStorage.setItem(cacheKey,
-                    JSON.stringify({
-                        data: mappedProducts,
-                        timestamp: Date.now()
-                    }))
-            } catch (err) {
-                console.error("無法取得資料，ERROR為：", err)
+        // 沒快取資料 or 快取已過期，則發送請求取得新資料
+        try {
+            const currentMode = import.meta.env.VITE_CURRENT_MODE;
+            console.log(`目前的模式是：${currentMode}`);
+            let fetchedProducts = [];
+            if (currentMode === "under_development") {
+                const productCardQuantity = 20; //設定需要顯示幾樣商品
+                const response = await fetch(`/mock_data/mockProductCategory_${category}.json`);
+                const data = await response.json();
+                fetchedProducts = data.results.slice(0, productCardQuantity);
+                console.log(`目前ProductCategory的${category} productList是使用mock_data的資料。`)
+            } else {
+                const response = await axios.request(options)
+                fetchedProducts = response.data.results;
+                console.log(`目前ProductCategory的${category} productList是使用API取回的新資料。`)
             }
-          }
+            
+            console.log("ProductCategory的fetchedProducts：", fetchedProducts);
+            const mappedProducts = fetchedProducts.map((product: any) => ({
+                picURL: product.galleryImages[0].baseUrl,
+                stars: "⭐️⭐️⭐️⭐️⭐️",
+                productName: product.name,
+                price: parseFloat(product.price.value),
+                id: product.defaultArticle.code,
+                size: "M",
+                colorHex: product.articles[0].rgbColor,
+                colorName: product.articles[0].color.text,
+                }))
 
-          fetchData();
-    }, [category])
+            setProductList(mappedProducts);
+            // 儲存快取 & timestamp
+            localStorage.setItem(cacheKey,
+                JSON.stringify({
+                    data: mappedProducts,
+                    timestamp: Date.now()
+                }))
+        } catch (err) {
+            console.error("無法取得資料，ERROR為：", err)
+        }
+        }
+
+        fetchData();
+}, [category])
 
     // 排序商品
     const getSortedProducts = (): Product[] => {
