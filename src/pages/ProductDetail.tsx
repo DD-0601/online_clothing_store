@@ -55,7 +55,7 @@ function ProductDetail() {
     // 加入購物車的通知
     const [showNotification, setShowNotification] =useState(false);
     const sizeList = ["XS", "S", "M", "L", "XL"];
-    const shippingMethodList = ["宅配", "超商取貨", "店舖取貨"];
+    const shippingMethodList = ["to Home", "to Store", "to Branch"];
 
     // pagination dots設定
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -150,7 +150,7 @@ function ProductDetail() {
             {showNotification && (
             // 加入購物車的通知
             <div className="cart-notification">
-                商品已加入購物車
+                Item been added
             </div>
             )}
                 <div className="row">
@@ -193,7 +193,7 @@ function ProductDetail() {
                             </ul>
                         </div>
                         <div className="product-detail-shipping-method my-3 my-md-0">
-                        <span>配送方式:</span>
+                        <span id="delivery-method">Delivery:</span>
                         <div className="product-detail-shipping-method-group d-flex justify-content-between">
                             {shippingMethodList.map((method, index) => (
                                 <div key={index} className="product-detail-shipping-method-group-item">
@@ -256,7 +256,7 @@ function ProductDetail() {
                                 // console.log("顏色HEX是：", product.colorHex);
                                 // console.log("尺寸是：", selectedSize);
                                 }
-                            }>加入購物車</button>
+                            }>ADD to CART</button>
                             {/* 可以在這裡呼叫 API / Redux / localStorage 存購物車資訊 */}
                         </div>
                     </div>

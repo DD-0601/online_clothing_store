@@ -14,7 +14,7 @@ export function CategoryProvider({children}: {children: React.ReactNode}) {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch("http://localhost:3001/api/categories");
+                const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/categories`);
                 const data = await response.json();
                 setCategories(data);
             } catch (err) {
