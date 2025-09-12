@@ -6,23 +6,16 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import path from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const { Pool } = pkg;
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001; //線上部署時是process.env.PORT，本地時用指定的port
 
 
-if (process.env.NODE_ENV === "production") {
-    // 把 build 資料夾當靜態檔案
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-    app.use(express.static(path.join(__dirname, "dist")));
-
-    // ✅ Render / 線上環境：直接用 process.env，不需要呼叫 dotenv.config()去找.env 檔案
-    console.log("Running in production, using process.env directly");
-} else {
-    // ✅ 本地環境：需要讀取 .env 檔案
+if (process.env.NODE_ENV !== "production") {
+    // ✅ 本地環境：需要讀取 .env 檔案 ; render / 線上環境：直接用 process.env，不需要呼叫 dotenv.config()去找.env 檔案
     dotenv.config({ path: "../.env" });
     console.log("Running locally, loaded .env");
 }
@@ -223,10 +216,20 @@ app.get("/api/order_items/:id", async (req, res) => {
     }
 })
 
-if (process.env.NODE_ENV === "production") {
+// Only add SPA fallback if dist/index.html exists
+if (process.env.NODE_ENV === "production" && fs.existsSync(indexHtmlPath)) {
+    // 把 build 資料夾當靜態檔案
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    app.use(express.static(path.join(__dirname, "../dist")));
+    const indexHtmlPath = path.join(__dirname, "../dist", "index.html");
+    console.log("Serving static files（靜態資料夾） from:", path.join(__dirname, "../dist"));
+    console.log("indexHtmlPath 為：", indexHtmlPath);
+    console.log("index.html path 為：", indexHtmlPath, fs.existsSync(indexHtmlPath));
+
     // SPA fallback：非 API 路由都導向 index.html，注意要放在所以API路由的程式碼之後，讓API可以先被執行。
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "dist", "index.html"));
+        res.sendFile(indexHtmlPath);
     });
 }
 
