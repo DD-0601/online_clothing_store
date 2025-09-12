@@ -161,7 +161,7 @@ header ul {
   border-radius: 0 25% 0 25%;
 }
 .hero-section {
-  background-image: url('Group32-waves.png');
+  background-image: url('/Group32-waves.png');
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: contain; /* 或 contain，完整呈現圖像 */

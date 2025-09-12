@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import path from "path";
 import { fileURLToPath } from "url";
-import fs from "fs";
+// import fs from "fs";
 
 const { Pool } = pkg;
 
@@ -65,8 +65,11 @@ app.get("/api/categories", async (req, res) => {
 
 // API: 取得單一商品category
 app.get("/api/category/:category", async (req, res) => {
+
+    console.log("⚡ /api/category/:category path:", req.path);
     try {
         const category = req.params.category;
+        console.log("category PARAM is:", category);
         const result = await pool.query("SELECT * FROM carousel_img WHERE is_shown = true AND shown_location = 'ProductCategory' AND category = $1 ORDER BY is_shown ASC", [category]);
         res.json(result.rows);
     } catch (err) {
@@ -217,25 +220,27 @@ app.get("/api/order_items/:id", async (req, res) => {
 })
 
 // Only add SPA fallback if dist/index.html exists
-if (process.env.NODE_ENV === "production") {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-    const indexHtmlPath = path.join(__dirname, "../dist", "index.html");
-    if (fs.existsSync(indexHtmlPath)) {
-        // 把 build 資料夾當靜態檔案
-        app.use(express.static(path.join(__dirname, "../dist")));
-        console.log("Serving static files（靜態資料夾） from:", path.join(__dirname, "../dist"));
-        console.log("indexHtmlPath 為：", indexHtmlPath);
-        console.log("index.html path 為：", indexHtmlPath, fs.existsSync(indexHtmlPath));
+// if (process.env.NODE_ENV === "production") {
+//     const __filename = fileURLToPath(import.meta.url);
+//     const __dirname = path.dirname(__filename);
+//     const indexHtmlPath = path.join(__dirname, "../dist", "index.html");
+//     if (fs.existsSync(indexHtmlPath)) {
+//         // 把 build 資料夾當靜態檔案
+//         app.use(express.static(path.join(__dirname, "../dist")));
+//         console.log("Serving static files（靜態資料夾） from:", path.join(__dirname, "../dist"));
+//         console.log("indexHtmlPath 為：", indexHtmlPath);
+//         console.log("index.html path 為：", indexHtmlPath, fs.existsSync(indexHtmlPath));
 
-        // SPA fallback：非 API 路由都導向 index.html，注意要放在所以API路由的程式碼之後，讓API可以先被執行。
-        app.get("*", (req, res) => {
-            res.sendFile(indexHtmlPath);
-        });
-    } else {
-        console.warn("index.html not found, skipping SPA fallback");
-    }
-}
+//         // SPA fallback：非 API 路由都導向 index.html，注意要放在所以API路由的程式碼之後，讓API可以先被執行。
+//         app.get("*", (req, res) => {
+//             console.log("⚡ Catch-all triggered for path:", req.path);
+//             if (req.path.startsWith("/api/")) return next();
+//             res.sendFile(indexHtmlPath);
+//         });
+//     } else {
+//         console.warn("index.html not found, skipping SPA fallback");
+//     }
+// }
 
 app.listen(PORT, () => {
     console.log(`Server is now running on PORT: ${PORT}`)
