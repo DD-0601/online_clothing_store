@@ -217,20 +217,24 @@ app.get("/api/order_items/:id", async (req, res) => {
 })
 
 // Only add SPA fallback if dist/index.html exists
-if (process.env.NODE_ENV === "production" && fs.existsSync(indexHtmlPath)) {
-    // 把 build 資料夾當靜態檔案
+if (process.env.NODE_ENV === "production") {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-    app.use(express.static(path.join(__dirname, "../dist")));
     const indexHtmlPath = path.join(__dirname, "../dist", "index.html");
-    console.log("Serving static files（靜態資料夾） from:", path.join(__dirname, "../dist"));
-    console.log("indexHtmlPath 為：", indexHtmlPath);
-    console.log("index.html path 為：", indexHtmlPath, fs.existsSync(indexHtmlPath));
+    if (fs.existsSync(indexHtmlPath)) {
+        // 把 build 資料夾當靜態檔案
+        app.use(express.static(path.join(__dirname, "../dist")));
+        console.log("Serving static files（靜態資料夾） from:", path.join(__dirname, "../dist"));
+        console.log("indexHtmlPath 為：", indexHtmlPath);
+        console.log("index.html path 為：", indexHtmlPath, fs.existsSync(indexHtmlPath));
 
-    // SPA fallback：非 API 路由都導向 index.html，注意要放在所以API路由的程式碼之後，讓API可以先被執行。
-    app.get("*", (req, res) => {
-        res.sendFile(indexHtmlPath);
-    });
+        // SPA fallback：非 API 路由都導向 index.html，注意要放在所以API路由的程式碼之後，讓API可以先被執行。
+        app.get("*", (req, res) => {
+            res.sendFile(indexHtmlPath);
+        });
+    } else {
+        console.warn("index.html not found, skipping SPA fallback");
+    }
 }
 
 app.listen(PORT, () => {
