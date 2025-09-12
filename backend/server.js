@@ -4,12 +4,28 @@ import dotenv from "dotenv"
 import pkg from "pg";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config({ path: '../.env' });
 const { Pool } = pkg;
 
 const app = express();
 const PORT = 3001;
+
+
+if (process.env.NODE_ENV === "production") {
+    // 把 build 資料夾當靜態檔案
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    app.use(express.static(path.join(__dirname, "dist")));
+
+    // ✅ Render / 線上環境：直接用 process.env，不需要呼叫 dotenv.config()去找.env 檔案
+    console.log("Running in production, using process.env directly");
+} else {
+    // ✅ 本地環境：需要讀取 .env 檔案
+    dotenv.config({ path: "../.env" });
+    console.log("Running locally, loaded .env");
+}
 
 app.use(cors());
 app.use(express.json());
@@ -206,6 +222,14 @@ app.get("/api/order_items/:id", async (req, res) => {
         res.status(500).json({error: err.message});
     }
 })
+
+if (process.env.NODE_ENV === "production") {
+    // SPA fallback：非 API 路由都導向 index.html，注意要放在所以API路由的程式碼之後，讓API可以先被執行。
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "dist", "index.html"));
+    });
+}
+
 app.listen(PORT, () => {
     console.log(`Server is now running on PORT: ${PORT}`)
 });

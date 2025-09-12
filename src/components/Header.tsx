@@ -96,7 +96,7 @@ function Header({ OptionalStyle }: Props) {
                 {/* 3 */}
                 <div className="d-none d-md-flex col-md-3 text-center text-md-end d-flex justify-content-center align-items-center">
                   {userInfo?.name && (<div id="user_name" className="text-nowrap fw-bold">Hi, {userInfo.name}</div>)}
-                    <a href="/Cart" id="header-cart-link">
+                    <a href="/cart" id="header-cart-link">
                     <img className="px-2" src="/shopping-cart_weight_1.png" alt="shopping-cart-icon" />
                     {/* 購物車數字 */}
                     { totalQuantity > 0 && (

@@ -81,7 +81,7 @@ function Deal() {
                         </div>
                     </div>
                     <div id="deal-picture" className="col-10 col-lg-5 d-flex justify-content-center align-items-end mx-auto">
-                        <img className="img-fluid" src="./Rectangle-23.png" alt="deal-picture" />
+                        <img className="img-fluid" src="/Rectangle-23.png" alt="deal-picture" />
                         <div id="deal-picture-filter">
                             <div id="deal-picture-filter-dots"></div>
                             <div id="deal-picture-filter-square"></div>
