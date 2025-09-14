@@ -81,7 +81,7 @@ function CheckOut() {
             console.log("前端shippingInfo:", shippingInfo);
             console.log("前端cart:", cart);
             console.log("使用者選擇確定送出訂單")
-            const response = await fetch("/api/orders",{
+            const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/orders`,{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

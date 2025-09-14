@@ -168,7 +168,7 @@ function ProductCategory() {
     useEffect(() => {
         const fetchCarouselImgs = async () => {
             try {
-                const response = await fetch(`/api/category/${category}`);
+                const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/category/${category}`);
                 const data = await response.json();
                 setCarouselImgs(data);
             } catch (err) {

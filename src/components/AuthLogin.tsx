@@ -28,7 +28,7 @@ function AuthLogin() {
       }
 
       // 將輸入的帳號、密碼傳至後端
-      const response = await fetch("/api/login",{
+      const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/login`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

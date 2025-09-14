@@ -44,7 +44,7 @@ function OrderList() {
         if (!id) return;  // 先檢查是否有id，不然會先跑API發送的部分，此時還沒拿到id，會是undefined，會出錯
         const getOrderLists = async () => {
             try {
-                const response = await fetch(`/api/order_items/${id}`, {
+                const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/order_items/${id}`, {
                     method: "GET",
                 });
                 const data = await response.json();
