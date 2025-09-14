@@ -39,8 +39,8 @@ function AuthSignUp() {
             return;
         }
 
-        // 此處的/api 是有使用vite.config.ts內的proxy寫入後端的路由位置，故此處不需再寫localhost與port
-        const response = await fetch("/api/register", {
+        // 此處的/api 是proxy的http://localhost:3001，用env取代/api，部署至Render時會用環境變數換成後端URL
+        const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,14 +48,23 @@ function AuthSignUp() {
             body: JSON.stringify(formData),
         });
 
-        const data = await response.json();
+        let data: any = null;
+        try {
+            // 嘗試 parse JSON，確認後端回傳的資料是否會為JSON
+            data = await response.json();
+        } catch (err) {
+            console.log("Response is not valid JSON:", err)
+        }
 
         if (response.ok) {
             alert("註冊成功！");
             login(data.token);
             console.log("後端傳回的JWT token：", );
         } else {
-            alert("註冊失敗：" + data.message + data.error); // alert 只接受一個參數，故用加號連接message
+            alert(
+                 // alert 只接受一個參數，故用加號連接message
+                "註冊失敗：" + ((data?.message || "") + (data?.error || "") || `狀態碼：${response.status}`)
+            ); // 先拼接好訊息，如果結果是空字串才 fallback 到 狀態碼
         }
     };
 
