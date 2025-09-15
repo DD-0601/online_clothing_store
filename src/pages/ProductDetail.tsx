@@ -150,7 +150,7 @@ function ProductDetail() {
             {showNotification && (
             // 加入購物車的通知
             <div className="cart-notification">
-                Item been added
+                商品已加入購物車
             </div>
             )}
                 <div className="row">
@@ -224,7 +224,7 @@ function ProductDetail() {
                                 </button>
                                 <span>{quantity}</span>
                                 <button onClick={() => setQuantity( q => q + 1)}>
-                                    <i className="fa-solid fa-plus"></i>
+                                    <i className="fa-solid fa-plus" style={{color: "#140005"}}></i>
                                 </button>
                             </div>
                         </div>
@@ -257,7 +257,6 @@ function ProductDetail() {
                                 // console.log("尺寸是：", selectedSize);
                                 }
                             }>ADD to CART</button>
-                            {/* 可以在這裡呼叫 API / Redux / localStorage 存購物車資訊 */}
                         </div>
                     </div>
                 </div>

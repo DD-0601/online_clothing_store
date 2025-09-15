@@ -66,8 +66,8 @@ left: 50%;
 transform: translateX(-50%);
 }
 .embla__dot {
-width: 10px;
-height: 10px;
+width: 15px;
+height: 15px;
 border-radius: 50%;
 background-color: #FFF8;
 border: none;

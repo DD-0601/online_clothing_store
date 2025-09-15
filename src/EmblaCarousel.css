@@ -82,3 +82,8 @@
 .embla .embla__slide .embla__slide__number {
   font-size: 1rem;
 }
+@media (max-width: 480px) {
+  .embla {
+    --slide-size: 40%;
+  }
+}

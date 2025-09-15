@@ -63,7 +63,7 @@
 .item-price {
     color: #0009;
 }
-@media (max-width: 375px) {
+@media (max-width: 450px) {
     .item-info-title {
         font-size: 0.6rem;
     }
