@@ -152,3 +152,15 @@ background-color: #0005;
 #product-detail .product-detail-shipping-method-group-item label > input[type="radio"] {
     font-size: 0.5rem;
 }
+@media (max-width: 430px) {
+    .embla__dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 30%;
+        background-color: #FFF8;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border: 1px solid #999;
+    }
+}
