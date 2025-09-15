@@ -155,8 +155,8 @@ background-color: #0005;
 @media (max-width: 430px) {
     .embla__dot {
         width: 5px;
-        height: 5px;
-        border-radius: 30%;
+        height: 15px;
+        border-radius: 50%;
         background-color: #FFF8;
         border: none;
         cursor: pointer;
