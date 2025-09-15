@@ -36,6 +36,7 @@
 .product-detail-embla__viewport {
 overflow: hidden;
 position: relative;
+width: 100%;
 }
 .product-detail-embla__container {
 display: flex;
@@ -155,12 +156,8 @@ background-color: #0005;
 @media (max-width: 430px) {
     .embla__dot {
         width: 5px;
-        height: 15px;
-        border-radius: 50%;
-        background-color: #FFF8;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        border: 1px solid #999;
+        height: 5px;
+        border-radius: 30%;
+        padding: 0 5px;
     }
 }

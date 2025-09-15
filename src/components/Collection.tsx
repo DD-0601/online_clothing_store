@@ -13,7 +13,7 @@ function Collection({collectionHeading, collectionSubHeading, secondCollectionHe
             <div className="collection-up">
                 <div className="heading">
                     <div className="collection-heading col-12 text-center mb-3">{collectionHeading}</div>
-                    <div className="collection-subHeading col-12 text-center mb-5">{collectionSubHeading}</div>
+                    <div className="collection-subHeading col-12 text-center mb-5 px-2">{collectionSubHeading}</div>
                 </div>
                 <div className="product-wrapper d-flex justify-content-center">
                     <div className="product-demo d-flex flex-wrap flex-lg-nowrap text-center justify-content-evenly">
